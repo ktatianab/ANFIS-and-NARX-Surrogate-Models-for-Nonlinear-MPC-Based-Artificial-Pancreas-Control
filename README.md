@@ -322,10 +322,10 @@ Evalúa a los tres controladores (**NMPC-Bergman**, **NMPC-NARX** y **PID**) baj
 | **Insulina Total Administrada - Comida (mU)** | $\approx 0 \text{ mU}$ | 147.28 mU | 25.00 mU |
 | **Insulina Total Administrada - Hipoglucemia (mU)** | 1.14 mU | 266.43 mU | **0.00 mU** |
 
----
 
-## Conclusiones y Desempeño Clínico
+## Conclusiones y Auditoría de Seguridad Clínica
 
-1. **Recuperación Fisiológica Acelerada**: En el escenario de hipoglucemia inicial ($G_0 = 60 \text{ mg/dL}$), el controlador **NMPC-NARX logra recuperar al paciente al rango seguro ($G \ge 70 \text{ mg/dL}$) en solo 15 minutos**, comparado con los 70 minutos requeridos por NMPC-Bergman y PID. Esto eleva el porcentaje de **Tiempo en Rango (TIR) en hipoglucemia del 77.05% al 95.08%**.
-2. **Dinámicas de Contrarregulación Aprendidas**: El modelo NARX capturó la respuesta fisiológica compleja de producción de glucosa hepática interna presente en el simulador `simglucose` (Dalla Man), permitiendo al controlador realizar correcciones preventivas más suaves y efectivas.
-3. **Reducción Masiva de Errores Acumulados**: En el evento de comida de tipo impulso, **NMPC-NARX redujo el ISE en un 80.5%** y el **IAE en un 74.4%** con respecto al NMPC basado en Bergman, demostrando la superioridad de utilizar modelos sustitutos (surrogate models) identificados directamente de la fisiología del paciente en lugar de modelos analíticos simplificados.
+1. **Rastreo Eficaz ante Comidas**: En escenarios nominales de comida tipo impulso, el modelo NMPC-NARX redujo el ISE en un **80.5%** frente al NMPC-Bergman analítico, evidenciando la capacidad de los modelos neuronales para ajustar dinámicas complejas en la región de soporte de datos.
+2. **Fallo Crítico de Seguridad en Hipoglucemia**: A pesar de su excelente métrica de predicción ($R^2 = 0.994$), en el escenario de hipoglucemia inicial ($G_0 = 60\text{ mg/dL}$) el NMPC-NARX administró **266.43 mU** de insulina (más de 200× que Bergman y PID).
+3. **Inversión de Gradientes por Covariate Shift**: El optimizador IPOPT explotó una brecha de extrapolación donde el modelo NARX invirtió la relación dosis-respuesta (a $G=100.5\text{ mg/dL}$ predijo mayor glucosa ante dosis máxima $u=5$ que ante $u=0$). 
+4. **Lección Metodológica**: Las métricas agregadas ($R^2$, ISE) no garantizan control seguro en lazo cerrado; el despliegue de modelos sustitutos diferenciables en sistemas críticos requiere incorporar **restricciones de monotonicidad** ($\partial G / \partial u \le 0$) o penalizaciones de barrera en la función de costo del NMPC.
