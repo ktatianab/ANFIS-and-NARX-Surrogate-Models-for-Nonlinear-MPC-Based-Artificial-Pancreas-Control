@@ -11,7 +11,7 @@
 
 Este repositorio contiene la implementación completa **End-to-End** de un sistema de **Páncreas Artificial (Artificial Pancreas - AP)** para el control automático de glucosa en sangre en pacientes con Diabetes Mellitus Tipo 1 (T1D). 
 
-El proyecto combina simulaciones fisiológicas realistas en Python (`simglucose` / modelo Dalla Man), entrenamiento e identificación de sistemas dinámicos no lineales mediante **Redes Neuronales NARX** y **ANFIS (Adaptive Neuro-Fuzzy Inference System)** en PyTorch, exportación simbólica a **CasADi**, y diseño e integración de controladores predictivos **NMPC (Nonlinear Model Predictive Control)** con solucionadores numéricos **IPOPT** y controladores **PID** en MATLAB.
+El proyecto combina simulaciones fisiológicas realistas en Python (`simglucose` / modelo Dalla Man), entrenamiento e identificación de sistemas dinámicos no lineales mediante **Redes Neuronales NARX** y **ANFIS (Adaptive Neuro-Fuzzy Inference System)** en PyTorch, exportación simbólica a **CasADi**, y diseño e integración de controladores predictivos **NMPC (Nonlinear Model Predictive Control)** con solucionadores numéricos **IPOPT** y controladores **PID** en MATLAB, aceptado como paper en los workshop Woman in Machine learning WIML y LatinXinAin en Neurips 2026
 
 ---
 
