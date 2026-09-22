@@ -1,4 +1,4 @@
-# ANFIS-and-NARX-Surrogate-Models-for-Nonlinear-MPC-Based-Artificial-Pancreas-Control}
+
 
 # ANFIS and NARX Surrogate Models for Nonlinear MPC-Based Artificial Pancreas Control
 
