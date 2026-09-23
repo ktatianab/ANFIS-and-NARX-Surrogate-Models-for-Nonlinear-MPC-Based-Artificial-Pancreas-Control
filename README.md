@@ -7,6 +7,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Framework](https://img.shields.io/badge/CasADi-PyTorch-orange.svg)](https://web.casadi.org/)
 
+
 # Páncreas Artificial Inteligente: Control Predictivo Basado en Modelos No Lineales (NMPC) mediante Identificación de Sistemas con Redes Neuronal NARX y ANFIS
 
 Este repositorio contiene la implementación completa **End-to-End** de un sistema de **Páncreas Artificial (Artificial Pancreas - AP)** para el control automático de glucosa en sangre en pacientes con Diabetes Mellitus Tipo 1 (T1D). 
